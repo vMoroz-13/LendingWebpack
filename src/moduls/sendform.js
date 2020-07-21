@@ -36,7 +36,12 @@ const sendform = () => {
         }
 
         postData(body)
-            .then(statusMassege.textContent = successMessage)
+            .then(respons => {
+                if (respons.status !== 200) {
+                    throw new Error('status network not 200');
+                }
+                statusMassege.textContent = successMessage;
+            })
             .catch(error => {
                 statusMassege.textContent = errorMessage;
                 console.error(error);
@@ -56,7 +61,12 @@ const sendform = () => {
             body[val[0]] = val[1];
         }
         postData(body)
-            .then(statusMassege.textContent = successMessage)
+            .then(respons => {
+                if (respons.status !== 200) {
+                    throw new Error('status network not 200');
+                }
+                statusMassege.textContent = successMessage;
+            })
             .catch(error => {
                 statusMassege.textContent = errorMessage;
                 console.error(error);
